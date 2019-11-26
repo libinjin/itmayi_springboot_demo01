@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <packaging>war</packaging>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.itmayi</groupId>
+    <artifactId>itmayi_springboot_demo01</artifactId>
+    <version>1.0</version>
+    <name>itmayi_springBoot_demo01</name>
+
+    <!-- Maven parent目的，聚合工厂，继承父类的jar包-->
+    <!--Spring parent目的：统一整合第三方框架，依赖信息（SpringBoot 支持依赖不需要写版本号）-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <!--springboot 整合web组件，整合SpringMVC，就会把传统范方式的SpringMVC依赖的jar包全部下载下来-->
+        <!--引入spring-boot-starter-web 帮你整合好所有相关的依赖jar包，靠Maven的依赖传递-->
+
+        <!--原理：spring-boot-starter-parent项目中，整合好相关jar包依赖信息-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion><!-- 去除默认配置 -->
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--使用undertow代替tomcat容器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!--日志-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>1.5.6.RELEASE</version>
+        </dependency>
+        <!--1.网页静态化处理插件，因为SpringBoot中的tomcat
+            默认支持freemarker,但是不支持JSP，在引入JSP
+            时，需要额外加tomcat的配置
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!--2.使用JSP时需要引入的-->
+        <!-- <dependency>
+             <groupId>org.apache.tomcat.embed</groupId>
+             <artifactId>tomcat-embed-jasper</artifactId>
+         </dependency>-->
+
+        <!--使用lombok可以使用ASM字节码技术，虚拟生成get和set方法-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--Spring-aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!--mysql数据库连接-->
+        <dependency>
+            <groupId> mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>java_youguu</id>
+            <name>java_youguu</name>
+            <url>http://maven.youguu.com:8081/nexus/content/groups/java_youguu/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.itmayi.App</mainClass>
+                    <!--<layout>JAR</layout>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

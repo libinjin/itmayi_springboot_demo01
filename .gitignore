@@ -2,11 +2,12 @@
 *.ipr
 *.iws
 .settings/
+.idea/
+out/
 .gradle/
 target/
 build/
 bin/
-out/
 logs
 tags
 bin
@@ -16,11 +17,6 @@ build
 release
 .classpath
 .project
-.idea/
 gradle
 gradlew
 gradlew.bat
-.gitignore
-pom.xml
-src/
-webapp/
