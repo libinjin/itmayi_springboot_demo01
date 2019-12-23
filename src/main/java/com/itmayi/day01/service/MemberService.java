@@ -10,7 +10,7 @@ public class MemberService {
 
     // 利用aop技术，创建单独的线程执行，
     @Async
-    public String addMember(){
+    public String addMember() {
        /*
         相当于
         new Thread(new Runnable() {

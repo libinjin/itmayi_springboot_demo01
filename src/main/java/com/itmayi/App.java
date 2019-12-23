@@ -12,8 +12,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 //相当于@ComponentScan和@EnableAutoConfiguration
 //相当于扫当前包com.itmayi
+
 /**
- *
  * 加上@SpringBootApplication
  * 这是第种中启动方式加上扫包
  * 扫包优化：就是启动优化

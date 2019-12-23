@@ -10,7 +10,7 @@ public class FTLIndexController {
 
 
     @RequestMapping("/ftlIndex")
-    public String ftlIndex(Map<String, Object> map){
+    public String ftlIndex(Map<String, Object> map) {
         map.put("name", "libin");
         map.put("age", 21);
         map.put("sex", "0");

@@ -17,26 +17,28 @@ import javax.sql.DataSource;
  * 读取数据源
  */
 @Configuration //类似xml配置注册到springBoot容器中
-@MapperScan(basePackages="com.itmayi.multiDataSource.test2",
-            sqlSessionFactoryRef = "test2SqlSessionFactory")
+@MapperScan(basePackages = "com.itmayi.multiDataSource.test2",
+        sqlSessionFactoryRef = "test2SqlSessionFactory")
 public class DataSource2Config {
 
     /**
      * 配置test2数据库
      * 去properties配置文件中读取
      * spring.datasource.test2前缀的相关配置
+     *
      * @return
      */
     @Bean(name = "test2DataSource")
     @ConfigurationProperties(prefix = "spring.datasource.test2")
     //@Primary
-    public DataSource testDataSource(){
+    public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
 
 
     /**
      * test2的sql会话工厂
+     *
      * @param dataSource
      * @return
      * @throws Exception
@@ -55,9 +57,9 @@ public class DataSource2Config {
 
 
     //事务配置
-    @Bean(name="test2TransactionManager")
+    @Bean(name = "test2TransactionManager")
     //@Primary
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("test2DataSource") DataSource dataSource){
+    public DataSourceTransactionManager testTransactionManager(@Qualifier("test2DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
@@ -65,7 +67,7 @@ public class DataSource2Config {
     @Bean(name = "test2SqlSessionTemplate")
     public SqlSessionTemplate testSqlSessionTemplate(
             @Qualifier("test2SqlSessionFactory") SqlSessionFactory sqlSessionFactory
-    ){
+    ) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

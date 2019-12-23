@@ -12,12 +12,12 @@ public class Indexcontroller {
 
     /**
      * 在微服务的情况下，基本上都在类上加
-     * @RequestController
-     * 修饰的类下的所有方法，全部都是返回json
+     *
+     * @RequestController 修饰的类下的所有方法，全部都是返回json
      * 格式，这样的话，不用在方法上加Response
      */
     @RequestMapping("/index")
-    public String index(){
+    public String index() {
 
         return "每特教育，这是我的第一个SpringBoot项目";
     }

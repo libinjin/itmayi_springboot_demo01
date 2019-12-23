@@ -14,7 +14,7 @@ import java.util.Map;
  * 1、捕获返回json格式的
  * 2、捕获返回页面
  */
-@ControllerAdvice(basePackages="com.itmayi.day01")
+@ControllerAdvice(basePackages = "com.itmayi.day01")
 public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseBody
-    public Map<String, Object> errorResult(){
+    public Map<String, Object> errorResult() {
         Map<String, Object> errorResultMap = new HashMap<>();
         errorResultMap.put("errorCode", "500");
         errorResultMap.put("errorMsg", "系统错误");

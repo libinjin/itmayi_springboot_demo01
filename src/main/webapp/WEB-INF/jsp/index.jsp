@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Hello</title>
+    <title>Hello</title>
 </head>
 <body>
 <img src="http://m.youguu.com/mobile/img/course/600003/img/600003049/01.png"/>

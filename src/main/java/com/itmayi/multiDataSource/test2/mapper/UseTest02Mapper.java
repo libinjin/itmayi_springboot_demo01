@@ -11,5 +11,5 @@ public interface UseTest02Mapper {
     User findByName(@Param("name") String name);
 
     @Insert("insert into user(name, age) values(#{name}, #{age})")
-    int insert(@Param("name") String name, @Param("age")Integer age);
+    int insert(@Param("name") String name, @Param("age") Integer age);
 }

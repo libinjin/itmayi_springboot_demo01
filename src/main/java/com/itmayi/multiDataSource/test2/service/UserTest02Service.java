@@ -13,7 +13,7 @@ public class UserTest02Service {
     private UseTest02Mapper useTest02Mapper;
 
     @Transactional(transactionManager = "test2TransactionManager")
-    public int addUser(String name, Integer age){
+    public int addUser(String name, Integer age) {
         int add = useTest02Mapper.insert(name, age);
         return add;
     }

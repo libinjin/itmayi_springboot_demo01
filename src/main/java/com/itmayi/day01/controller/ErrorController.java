@@ -8,10 +8,10 @@ public class ErrorController {
 
 
     @RequestMapping("/getUser")
-    public String getUser(int i){
+    public String getUser(int i) {
 
         int d = 1 / i;
-        System.out.println("d:"+d);
+        System.out.println("d:" + d);
 
         return "success";
     }

@@ -12,32 +12,35 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
 import javax.sql.DataSource;
 
 /**
  * 读取数据源
  */
 @Configuration //类似xml配置注册到springBoot容器中
-@MapperScan(basePackages="com.itmayi.multiDataSource.test1",
-            sqlSessionFactoryRef = "test1SqlSessionFactory")
+@MapperScan(basePackages = "com.itmayi.multiDataSource.test1",
+        sqlSessionFactoryRef = "test1SqlSessionFactory")
 public class DataSource1Config {
 
     /**
      * 配置test1数据库
      * 去properties配置文件中读取
      * spring.datasource.test1前缀的相关配置
+     *
      * @return
      */
     @Bean(name = "test1DataSource")
     @ConfigurationProperties(prefix = "spring.datasource.test1")
     //@Primary
-    public DataSource testDataSource(){
+    public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
 
 
     /**
      * test1的sql会话工厂
+     *
      * @param dataSource
      * @return
      * @throws Exception
@@ -56,9 +59,9 @@ public class DataSource1Config {
 
 
     //事务配置
-    @Bean(name="test1TransactionManager")
+    @Bean(name = "test1TransactionManager")
     //@Primary
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("test1DataSource") DataSource dataSource){
+    public DataSourceTransactionManager testTransactionManager(@Qualifier("test1DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
@@ -66,7 +69,7 @@ public class DataSource1Config {
     @Bean(name = "test1SqlSessionTemplate")
     public SqlSessionTemplate testSqlSessionTemplate(
             @Qualifier("test1SqlSessionFactory") SqlSessionFactory sqlSessionFactory
-    ){
+    ) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

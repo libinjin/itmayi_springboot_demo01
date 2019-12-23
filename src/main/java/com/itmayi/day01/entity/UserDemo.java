@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 使用lombok虚拟生成get和set方法
  * 利用ASM动态修改字节码文件
- *
  */
 @Slf4j//等同于Log
 @Getter
@@ -53,7 +52,7 @@ public class UserDemo {
         UserDemo user = new UserDemo();
         user.setAge(10);
         user.setName("libin");
-       log.info((user.toString()));
+        log.info((user.toString()));
     }
 
 }

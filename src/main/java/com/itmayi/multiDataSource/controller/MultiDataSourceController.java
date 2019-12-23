@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class MultiDataSourceController {
@@ -18,12 +20,19 @@ public class MultiDataSourceController {
 
 
     @RequestMapping("/addTest01")
-    public Integer insertUserTest001(String name, Integer age){
+    public Integer insertUserTest001(String name, Integer age) {
         return userTest01Service.addUser(name, age);
     }
 
     @RequestMapping("/addTest02")
-    public Integer insertUserTest002(String name, Integer age){
+    public Integer insertUserTest002(String name, Integer age) {
         return userTest02Service.addUser(name, age);
+    }
+
+    @RequestMapping("/query")
+    public Map querUserTest002(String name) {
+        Map map = new HashMap();
+        map.put("user", userTest01Service.querUser(name));
+        return map;
     }
 }

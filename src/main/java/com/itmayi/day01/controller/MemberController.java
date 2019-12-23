@@ -25,10 +25,10 @@ public class MemberController {
     private String name;
 
     @RequestMapping("/member")
-    public Map<String, Object> getMember(){
+    public Map<String, Object> getMember() {
 
         Map<String, Object> map = new HashMap<>();
-        log.info("name:"+name);
+        log.info("name:" + name);
         log.info("1");
         String add = memberService.addMember();
         log.info("4");
@@ -39,4 +39,4 @@ public class MemberController {
     public String getName() {
         return name;
     }
- }
+}

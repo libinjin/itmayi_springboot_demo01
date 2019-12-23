@@ -22,7 +22,7 @@ public class WebLogAspect {
 
     //pointCut要切入的地方
     @Pointcut("execution(* com.itmayi.day01.controller.*.*(..))")
-    public void webLog(){
+    public void webLog() {
         System.out.println("--------------日志打印开始--------------");
     }
 
@@ -52,9 +52,9 @@ public class WebLogAspect {
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
-    public void doAfterReturning(Object ret){
+    public void doAfterReturning(Object ret) {
 
-        logger.info("响应值："+ret);
+        logger.info("响应值：" + ret);
     }
 
 }
