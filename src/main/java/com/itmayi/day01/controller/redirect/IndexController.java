@@ -23,6 +23,8 @@ public class IndexController {
     public void customRedirection(HttpServletResponse response){
         //通知客户端重定向
         response.setStatus(302);
+        //跳转到location中的地址
+        //相当于js中的location href = 'loginPage'
         response.setHeader("location", "loginPage");
     }
 
